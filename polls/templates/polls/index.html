@@ -1,0 +1,163 @@
+{% load static %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}"/>
+
+{#<ul class="nav nav-tabs">#}
+{#    <li role="presentation" class="active"><a href="#">Home</a></li>#}
+{#    <li role="presentation"><a href="#">Profile</a></li>#}
+{#    <li role="presentation"><a href="#">Messages</a></li>#}
+{#</ul>#}
+
+
+{#<div>#}
+{#<div class="dropdown">#}
+{#  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
+{#    Dropup#}
+{#    <span class="caret"></span>#}
+{#  </button>#}
+{#  <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">#}
+{#    <li><a href="#">Employees</a></li>#}
+{#    <li><a href="#">Departments</a></li>#}
+{#    <li><a href="#">Mata</a></li>#}
+{#    <li role="separator" class="divider"></li>#}
+{#    <li><a href="#">Contact</a></li>#}
+{#  </ul>#}
+{#</div>#}
+{#</div>#}
+
+<div class="container"><h1>Take your poll today! Win prizes by doing polls! </h1></div>
+<div id="exTab1" class="container">
+    <ul class="nav nav-pills">
+        <li class="active">
+            <a href="#1a" data-toggle="tab">Questions</a>
+        </li>
+        <li><a href="#2a" data-toggle="tab">Interesting stuff!</a>
+        </li>
+        <li><a href="#3a" data-toggle="tab">Prizes</a>
+        </li>
+        <li><a href="#4a" data-toggle="tab">Contact</a>
+        </li>
+    </ul>
+
+
+    <div class="tab-content clearfix">
+        <div class="tab-pane active" id="1a">
+            {% if latest_question_list %}
+                <ul>
+                    {% for question in latest_question_list %}
+                        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No polls are available.</p>
+            {% endif %}
+        </div>
+        <div class="tab-pane" id="2a">
+            <h1>10 Interesting Facts about the World<h1>
+                <h3><li>1. France is the most visited country in the world<li>
+                    2. Surprisingly Austraa is the most obese country in the world as of 2012 with a 26 percent obesity rate<li>
+                    3. There are no clocks in Las Vegas gambng casinos<li>
+                    4. Honolulu is the only place in the United States that has a royal palace<li>
+                    5. Spain is considered the most mountainous country in Europe and has over 8000 km of beaches<li>
+                    6. The United States has no official language<li>
+                    7. One third of all the airports in the world are located in the US<li>
+                    8. Mexico City is sinking at a rate of 10cm per year, 10 x faster than Venice<li>
+                    9. Saudi Arabia is the only country in the world not to have any rivers<li>
+                    10. It has been rumored that the Great Wall can be seen from space, but in actual fact it can not
+                    <h3>
+        </div>
+        <div class="tab-pane" id="3a">
+            <h1> Prizes will be given randomly</h1>
+            <h3><li> 1st prize: 1 year subscription to Wonderland Spa<li>
+                2nd prize: 1 year subscription to beer all over the city<li>
+                3rd prize: picnic with Eva Mendez</li>
+
+            </h3>
+        </div>
+        <div class="tab-pane" id="4a">
+            <h3>We don't have a phone number or an address but you can search us on google</h3>
+            <h4>Aproximate contact</h4>
+            <h4><li> Email:www.bascalie.org<li>
+                Phone Number: My father took it!<li>
+                Address: Slave in a city<li>
+
+            </h4>
+        </div>
+    </div>
+</div>
+<hr></hr>
+<div class="container"><h1>Divers Questions</h1></div>
+
+<div id="exTab2" class="container">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a  href="#1" data-toggle="tab">Car Questions</a>
+        </li>
+        <li><a href="#2" data-toggle="tab">Guvern related Questions</a>
+        </li>
+        <li><a href="#3" data-toggle="tab">Work related Questions</a>
+        </li>
+    </ul>
+
+    <div class="tab-content ">
+        <div class="tab-pane active" id="1">
+            {% if latest_question_list %}
+                <ul>
+                    {% for question in latest_question_list %}
+                        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No polls are available.</p>
+            {% endif %}
+
+        </div>
+        <div class="tab-pane" id="2">
+            {% if latest_question_list %}
+                <ul>
+                    {% for question in latest_question_list %}
+                        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No polls are available.</p>
+            {% endif %}
+        </div>
+        <div class="tab-pane" id="3">
+            {% if latest_question_list %}
+                <ul>
+                    {% for question in latest_question_list %}
+                        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No polls are available.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<hr></hr>
+{#{% if latest_question_list %}#}
+{#    <ul>#}
+{#        {% for question in latest_question_list %}#}
+{#            <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+{#{% else %}#}
+{#    <p>No polls are available.</p>#}
+{#{% endif %}#}
